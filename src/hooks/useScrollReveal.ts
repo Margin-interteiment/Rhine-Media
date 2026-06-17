@@ -1,14 +1,16 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+const SHOWN = 'data-shown';
+
 export function useScrollReveal(): void {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-a]:not(.vis)'));
+    const els = Array.from(document.querySelectorAll<HTMLElement>(`[data-a]:not([${SHOWN}])`));
 
     if (typeof IntersectionObserver === 'undefined') {
-      els.forEach((el) => el.classList.add('vis'));
+      els.forEach((el) => el.setAttribute(SHOWN, ''));
       return;
     }
 
@@ -16,7 +18,7 @@ export function useScrollReveal(): void {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('vis');
+            entry.target.setAttribute(SHOWN, '');
             observer.unobserve(entry.target);
           }
         });
@@ -29,9 +31,8 @@ export function useScrollReveal(): void {
     const revealVisible = () => {
       const vh = window.innerHeight || document.documentElement.clientHeight;
       els.forEach((el) => {
-        if (el.classList.contains('vis')) return;
-        const top = el.getBoundingClientRect().top;
-        if (top < vh) el.classList.add('vis');
+        if (el.hasAttribute(SHOWN)) return;
+        if (el.getBoundingClientRect().top < vh) el.setAttribute(SHOWN, '');
       });
     };
     const raf = requestAnimationFrame(revealVisible);
