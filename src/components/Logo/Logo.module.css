@@ -1,0 +1,26 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.mark {
+  width: 36px;
+  height: 36px;
+  background: var(--g-gold);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: #120d00;
+  letter-spacing: -0.02em;
+}
+
+.name span { color: var(--gold); }

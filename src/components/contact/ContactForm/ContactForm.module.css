@@ -1,0 +1,78 @@
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--b0);
+  border-radius: var(--r-xl);
+  padding: 44px 40px;
+}
+
+.card h3 {
+  font-family: var(--f-head);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fg {
+  margin-bottom: 20px;
+}
+
+.fg label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--t2);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.fg input,
+.fg select,
+.fg textarea {
+  width: 100%;
+  padding: 13px 15px;
+  background: var(--bg-2);
+  border: 1px solid var(--b1);
+  border-radius: var(--r-s);
+  color: var(--t1);
+  font-family: var(--f-body);
+  font-size: 0.91rem;
+  transition: var(--tf);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.fg input:focus,
+.fg select:focus,
+.fg textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,151,59,0.1);
+}
+
+.fg input::placeholder,
+.fg textarea::placeholder { color: var(--t3); }
+.fg textarea { resize: vertical; min-height: 130px; }
+.fg select option { background: var(--bg-2); color: var(--t1); }
+
+.success {
+  display: none;
+  background: rgba(60, 180, 100, 0.1);
+  border: 1px solid rgba(60, 180, 100, 0.3);
+  border-radius: var(--r-m);
+  padding: 18px 22px;
+  color: #6ee79a;
+  font-size: 0.93rem;
+  margin-top: 20px;
+  text-align: center;
+}
+.success.show { display: block; }
+
+@media (max-width: 768px) {
+  .row2 { grid-template-columns: 1fr; }
+  .card { padding: 28px 22px; }
+}
